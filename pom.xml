@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bjut.zhangvalue</groupId>
+    <artifactId>TF-IDF</artifactId>
+    <version>1.0-SNAPSHOT</version>
+<dependencies>
+    <!-- 加载项目/libs/目录下的库 -->
+    <dependency>
+        <groupId>org.wltea</groupId>
+        <artifactId>analyzer</artifactId>
+        <version>1.0</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/libs/IKAnalyzer2012FF_u1.jar</systemPath>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.lucene</groupId>
+        <artifactId>lucene-core</artifactId>
+        <version>4.2.0</version>
+    </dependency>
+</dependencies>
+
+    <build>
+        <plugins>
+            <!-- 辅助配置加载项目/libs/中的库  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-extdirs</arg>
+                        <arg>${project.basedir}/libs</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}/libs</directory>
+                <targetPath>BOOT-INF/lib/</targetPath>
+                <includes>
+                    <include>**/*.jar</include>
+                </includes>
+            </resource>
+        </resources>
+
+    </build>
+</project>
